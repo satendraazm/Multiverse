@@ -1,0 +1,77 @@
+﻿@model LoginViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link href="~/assets/css/app.min.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/images/favicon.png" />
+    <style>
+        .login .login-content {
+            max-width: 26.5rem;
+            margin: 0 auto;
+            position: relative;
+            background: #0000009e !important;
+            border-radius: 15px;
+            padding: 30px;
+            color: #fff;
+        }
+
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
+    </style>
+</head>
+<body class="bgimg">
+    <video id="myVideo" autoplay loop muted>
+        <source src="~/media/mFlame_techlight.mp4" type="video/mp4" />
+    </video>
+
+    <div class="login content">
+        <div class="login-content">
+            <h1 class="text-center">Sign In</h1>
+
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="text-danger text-center mb-3">@Model.ErrorMessage</div>
+            }
+
+            <form asp-action="Login" asp-controller="Account" method="post">
+                <div class="form-group">
+                    <label>Authority</label>
+                    <select asp-for="Authority" class="form-control input-group-sm">
+                        <option value="">-- Select One --</option>
+                        <option value="Admin">Admin</option>
+                        <option value="User">User</option>
+                    </select>
+                    <span asp-validation-for="Authority" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Login ID</label>
+                    <input asp-for="UserId" class="form-control input-group-sm" placeholder="username@address.com" />
+                    <span asp-validation-for="UserId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input asp-for="Password" class="form-control input-group-sm" type="password" placeholder="Enter your password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block mb-3">Login</button>
+
+                <div class="text-center text-muted">&copy; 2020 Prolab Solutions | All Rights Reserved</div>
+            </form>
+        </div>
+    </div>
+
+    <script src="~/assets/js/app.min.js"></script>
+</body>
+</html>
