@@ -21,7 +21,7 @@ namespace Multiverse.Controllers
                 return View(new LoginViewModel());
             }
 
-            [HttpPost]
+           [HttpPost]
             public IActionResult Login(LoginViewModel model)
             {
                 if (!ModelState.IsValid)

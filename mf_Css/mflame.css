@@ -1,0 +1,171 @@
+﻿
+/*Design Author Nitish Soni*/
+
+.mybg {
+    background-image: url("images/Power.jpg");
+}
+
+.space {
+    padding-right: 5px;
+}
+
+.mfbottom-container {
+    background: #1a5abb;
+    position: relative;
+    padding: 0.65rem 1.25rem;
+}
+
+.saletotal {
+    font-weight: 550;
+    /*font-style: italic;*/
+}
+
+.tb_uppercase {
+    text-transform: uppercase;
+}
+
+.border_none {
+    border: none !important;
+}
+
+.mtop-5px {
+    margin-top: 5px;
+}
+
+
+.fontsize16 {
+    font-size: 16px;
+}
+
+.pad_none {
+    padding: 0px 15px !important;
+}
+
+.sucess {
+    background-color: #e1f4e5;
+}
+
+.sucesshead {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.sucessfont {
+    font-size: 1.1vw;
+    font-weight: 600;
+    color: #000c03;
+    font-family: inherit;
+}
+
+.mfgif_sucess {
+    width: 86px;
+    height: 60px;
+}
+
+.thumb {
+    color: #32d554;
+}
+
+.mfalert {
+    color: #ff0000;
+}
+
+.mfgif_alert {
+    width: 82px;
+    height: 48px;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.alertbg {
+    background-color: #d20a0a;
+}
+
+.alertfont {
+    font-size: 1.1vw;
+    font-weight: 600;
+    color: #ffffff;
+    font-family: inherit;
+}
+
+.logoutmfouter {
+    background: #fcd462;
+    width: 40%;
+    padding-left: 15px;
+    margin-left: 50px;
+    font-size: 12px;
+    color: black;
+}
+
+.talign_left {
+    text-align: left !important;
+}
+
+.talign_right {
+    text-align: right !important;
+}
+
+.talign_center {
+    text-align: center !important;
+}
+
+.red {
+    color: #ff0000;
+    font-weight: 500;
+}
+
+.green {
+    color: #1da52e;
+    font-weight: 500;
+}
+
+.blue {
+    color: #3045da;
+    font-weight: 500;
+}
+
+.orange {
+    color: orangered;
+    font-weight: 500;
+}
+
+.black {
+    color: #000;
+    font-weight: 500;
+}
+
+
+table {
+    font-size: 12px !important;
+}
+
+.pb-5 {
+    padding-bottom: 1rem !important;
+}
+
+.mfreadonly {
+}
+
+.ttuppercase {
+    text-transform: uppercase;
+}
+
+.ml30 {
+    margin-left: 30px;
+}
+
+#P_body_lbl_stock {
+    font-size: small !important;
+}
+
+label {
+    font-weight: 500 !important;
+    font-size: 13px;
+}
+
+.textcW {
+    color: #4fb93c !important;
+    font-size: 0.9vw;
+    font-weight: 600;
+}

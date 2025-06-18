@@ -1,49 +1,559 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Multiverse</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Multiverse.styles.css" asp-append-version="true" />
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="assets/css/app.min.css" rel="stylesheet">
+    <asp:ContentPlaceHolder ID="P_head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="~/assets/plugins/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" />
+    <script src="~/assets/plugins/mf_chosen/js/dd1.min.js"></script>
+    <script src="~/assets/plugins/mf_chosen/js/dd2.js"></script>
+    <link href="~/assets/plugins/mf_chosen/css/dd_chosen.min.css" rel="stylesheet" />
+    <link href="~/mf_Css/mflame.css" rel="stylesheet" />
+    <link href="~/assets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="~/assets/plugins/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet">
+    <link href="~/assets/plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet">
+    <link href="~/assets/plugins/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet">
+    <link href="~/assets/plugins/mF_datatablesPrintbtns/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="~/assets/plugins/mF_datatablesPrintbtns/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <!-- This website all code is monitised and licenced. All the code is under copyright by Nitish Soni-8168074180 -->
+    <script lang="ja">
+        // BBP Function
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Multiverse</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <form id="form1" runat="server">
+        <div id="app" class="app">
+            <div id="header" class="app-header">
+                <div class="mobile-toggler">
+                    <button type="button" class="menu-toggler" data-toggle="sidebar-mobile">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div>
+
+                <div class="brand">
+                    <div class="desktop-toggler">
+                        <button type="button" class="menu-toggler" data-toggle="sidebar-minify">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </button>
+                    </div>
+                    <a href="dashboard" class="">
+                        <img src="assets/img/logo.png" alt="Shiva Batteries Jind" style="height: 30px !important; width: 160px !important;">
+                    </a>
+                </div>
+
+                <div class="menu">
+                    <div class="menu-search">
+                        <div class="menu-search-icon"><i class="fa fa-search"></i></div>
+                        <div class="menu-search-input">
+                            <input type="text" class="form-control" placeholder="Search menu...">
+                        </div>
+                    </div>
+
+                    <!---------------- Notification Div Start--------------->
+                    <%--<div class="menu-item dropdown">
+                        <a href="#" data-toggle="dropdown" data-display="static" class="menu-link">
+                            <div class="menu-icon"><i class="fa fa-bell nav-icon"></i></div>
+                            <div class="menu-label">2</div>
+                        </a>
+                          <!-- This website all code is monitised and licenced. All the code is under copyright by Nitish Soni-8168074180 -->
+                        <div class="dropdown-menu dropdown-menu-right dropdown-notification">
+                            <h6 class="dropdown-header text-gray-900 mb-1">Notifications</h6>
+                            <a href="#" class="dropdown-notification-item">
+                                <div class="dropdown-notification-icon">
+                                    <i class="fa fa-receipt fa-lg fa-fw text-success"></i>
+                                </div>
+                                <div class="dropdown-notification-info">
+                                    <div class="title">Your store has a new order for 2 items totaling $1,299.00</div>
+                                    <div class="time">just now</div>
+                                </div>
+                                <div class="dropdown-notification-arrow">
+                                    <i class="fa fa-chevron-right"></i>
+                                </div>
+                            </a>
+
+                            <a href="#" class="dropdown-notification-item">
+                                <div class="dropdown-notification-icon">
+                                    <img src="assets/img/icon/android.svg" alt="" width="26">
+                                </div>
+                                <div class="dropdown-notification-info">
+                                    <div class="title">Your android application has been approved</div>
+                                    <div class="time">5 minutes ago</div>
+                                </div>
+                                <div class="dropdown-notification-arrow">
+                                    <i class="fa fa-chevron-right"></i>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-notification-item">
+                                <div class="dropdown-notification-icon">
+                                    <img src="assets/img/icon/paypal.svg" alt="" width="26">
+                                </div>
+                                <div class="dropdown-notification-info">
+                                    <div class="title">Paypal payment method has been enabled for your store</div>
+                                    <div class="time">10 minutes ago</div>
+                                </div>
+                                <div class="dropdown-notification-arrow">
+                                    <i class="fa fa-chevron-right"></i>
+                                </div>
+                            </a>
+                            <div class="p-2 text-center mb-n1">
+                                <a href="#" class="text-gray-800 text-decoration-none">See all</a>
+                            </div>
+                        </div>
+                    </div>--%>
+                    <!----------------// Notification Div--------------->
+
+                    <div class="menu-item dropdown">
+                        <a href="#" data-toggle="dropdown" data-display="static" class="menu-link">
+                            <div class="menu-img online" id="userdp" runat="server">
+                                <%--<img src="assets/img/user/user.jpg" alt="" class="mw-100 mh-100 rounded-circle">--%>
+                                <img src="assets/img/user/user.jpg" alt="" class="mw-100 mh-100 rounded-circle">
+                            </div>
+                            <div class="menu-text">
+                                <span class="__cf_email__">
+                                    <asp:Label ID="login_user_name" runat="server" Text="Label"></asp:Label></span>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mr-lg-3">
+                            <a class="dropdown-item d-flex align-items-center" href="viewuser" id="Div_Profile_Tabs" runat="server">Profile <i class="fa fa-user-circle fa-fw ml-auto text-gray-400 f-s-16"></i></a>
+                            <div class="dropdown-divider" id="divider" runat="server"></div>
+                            <asp:LinkButton ID="btnlogout" runat="server" CssClass="dropdown-item d-flex align-items-center" OnClientClick="return preventBack()" OnClick="btnlogout_Click">Log Out <i class="fa fa-power-off fa-fw ml-auto text-gray-400 f-s-16"></i></asp:LinkButton>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
+
+            <div id="sidebar" class="app-sidebar">
+                <div class="app-sidebar-content" data-scrollbar="true" data-height="100%">
+                    <div class="menu">
+                        <div class="menu-header">Navigation Bar</div>
+                        <div class="menu-item active">
+                            <a href="dashboard" class="menu-link">
+                                <span class="menu-icon"><i class="fa fa-laptop"></i></span>
+                                <span class="menu-text">Dashboard</span>
+                            </a>
+                        </div>
+
+
+
+                        <div class="menu-divider"></div>
+                        <%--<div class="menu-header">Battery Section</div>--%>
+                        <div class="menu-item has-sub">
+                            <a href="javascript:void(0)" class="menu-link">
+                                <span class="menu-icon"><i class="fa fa-car-battery"></i></span>
+                                <span class="menu-text">ITEMS</span>
+                                <span class="menu-caret"><b class="caret"></b></span>
+                            </a>
+                            <div class="menu-submenu">
+                                <div class="menu-item">
+                                    <a href="addbmodels" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-plus"></i></span>New Item</span>
+                                    </a>
+                                </div>
+
+                                <div class="menu-item">
+                                    <a href="addbatteries" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-plus"></i></span>Item Name</span>
+                                    </a>
+                                </div>
+
+                                <div class="menu-item">
+                                    <a href="addstock" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-plus"></i></span>Stock</span>
+                                    </a>
+                                </div>
+
+                                <div class="menu-item">
+                                    <a href="viewstock" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-edit"></i></span>Update Stock</span>
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <%--<div class="menu-divider"></div>--%>
+                        <%--<div class="menu-header">Sale Item Section</div>--%>
+                        <div class="menu-item has-sub">
+                            <a href="javascript:void(0)" class="menu-link">
+                                <span class="menu-icon"><i class="fa fa-rupee-sign"></i></span>
+                                <span class="menu-text">SALE</span>
+                                <span class="menu-caret"><b class="caret"></b></span>
+                            </a>
+                            <div class="menu-submenu">
+                                <div class="menu-item">
+                                    <a href="sale" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-plus"></i></span>New Sale</span>
+                                    </a>
+                                    <a href="viewsale" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-edit"></i></span>Edit Item</span>
+                                    </a>
+                                    <a href="rptsale" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-search"></i></span>Search Item</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <%--<div class="menu-divider"></div>--%>
+                        <%--<div class="menu-header">Purchase Item Section</div>--%>
+                        <div class="menu-item has-sub">
+                            <a href="javascript:void(0)" class="menu-link">
+                                <span class="menu-icon"><i class="fa fa-shopping-cart"></i></span>
+                                <span class="menu-text">PURCHASE</span>
+                                <span class="menu-caret"><b class="caret"></b></span>
+                            </a>
+                            <div class="menu-submenu">
+                                <div class="menu-item">
+                                    <a href="purchase" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-plus"></i></span>New Purchase</span>
+                                    </a>
+
+                                    <a href="#" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-edit"></i></span>Cash</span>
+                                    </a>
+
+                                    <a href="rptcash" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-search"></i></span>Search</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <%--<div class="menu-header">Cash Section</div>--%>
+                        <div class="menu-item has-sub">
+                            <a href="javascript:void(0)" class="menu-link">
+                                <span class="menu-icon"><i class="fa fa-money-bill-alt"></i></span>
+                                <span class="menu-text">CASH</span>
+                                <span class="menu-caret"><b class="caret"></b></span>
+                            </a>
+                            <div class="menu-submenu">
+                                <div class="menu-item">
+                                    <a href="debitcash" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-plus"></i></span>Debit</span>
+                                    </a>
+                                    <a href="addcash" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-plus"></i></span>Credit</span>
+                                    </a>
+
+                                    <%-- <a href="viewcash" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-edit"></i></span>Edit</span>
+                                    </a>
+
+                                    <a href="rptcash" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-search"></i></span>Search</span>
+                                    </a>--%>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- This website all code is monitised and licenced. All the code is under copyright by Nitish Soni-8168074180 -->
+                        <%--<div class="menu-header">Customer Record Section</div>--%>
+                        <div class="menu-item has-sub">
+                            <a href="javascript:void(0)" class="menu-link">
+                                <span class="menu-icon"><i class="fa fa-address-book"></i></span>
+                                <span class="menu-text">CUSTOMER RECORDS</span>
+                                <span class="menu-caret"><b class="caret"></b></span>
+                            </a>
+                            <div class="menu-submenu">
+                                <div class="menu-item">
+                                    <a href="addcustomer" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-plus"></i></span>Customer</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a href="viewcustomer" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-edit"></i></span>Edit</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a href="rptcustomer" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-search"></i></span>Search</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- This website all code is monitised and licenced. All the code is under copyright by Nitish Soni-8168074180 -->
+                        <%-- <div class="menu-header">Complaint Section</div>--%>
+                        <div class="menu-item has-sub">
+                            <a href="javascript:void(0)" class="menu-link">
+                                <span class="menu-icon"><i class="fa fa-user-clock"></i></span>
+                                <span class="menu-text">REPLACEMENT</span>
+                                <span class="menu-caret"><b class="caret"></b></span>
+                            </a>
+                            <div class="menu-submenu">
+
+                                <%--<div class="menu-item">
+                                    <a href="viewcomplaint" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-edit"></i></span>Edit</span>
+                                    </a>
+                                </div>--%>
+                                <%--<div class="menu-item">
+                                    <a href="viewcomplaintRecord" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-plus"></i></span>Add Complaint</span>
+                                    </a>
+                                </div>--%>
+                                <div class="menu-item">
+                                    <a href="viewcomplaintHistory" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-plus"></i></span>Add Complaint</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                        <!-- This website all code is monitised and licenced. All the code is under copyright by Nitish Soni-8168074180 -->
+                        <%--<div class="menu-divider"></div>--%>
+                        <%-- <div class="menu-header">Stock Menu</div>--%>
+                        <div class="menu-item has-sub">
+                            <a href="javascript:void(0)" class="menu-link">
+                                <span class="menu-icon"><i class="fa fa-file-alt"></i></span>
+                                <span class="menu-text">RAW MATERIAL</span>
+                                <span class="menu-caret"><b class="caret"></b></span>
+                            </a>
+                            <div class="menu-submenu">
+                                <div class="menu-item">
+                                    <a href="addrawmat" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-plus"></i></span>Add New</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a href="viewrawmat" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-edit"></i></span>Edit</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a href="rptrawmat" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-search"></i></span>Search</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- This website all code is monitised and licenced. All the code is under copyright by Nitish Soni-8168074180 -->
+                        <%--<div class="menu-divider"></div>
+                        <div class="menu-header">Search Menu</div>--%>
+                        <div class="menu-item has-sub">
+                            <a href="javascript:void(0)" class="menu-link">
+                                <span class="menu-icon"><i class="fa fa-search"></i></span>
+                                <span class="menu-text">SEARCH RECORD</span>
+                                <span class="menu-caret"><b class="caret"></b></span>
+                            </a>
+                            <div class="menu-submenu">
+                                <div class="menu-item">
+                                    <a href="viewcustomer" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-user"></i></span>Customers</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a href="viewsale" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-rupee-sign"></i></span>Sale</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a href="viewcash" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-money-bill-alt"></i></span>Cash</span>
+                                    </a>
+                                </div>
+
+                                <div class="menu-item">
+                                    <a href="viewrawmat" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-file-alt"></i></span>Raw Material</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- This website all code is monitised and licenced. All the code is under copyright by Nitish Soni-8168074180 -->
+                        <%-- <div class="menu-divider"></div>--%>
+                        <%-- <div class="menu-header">Reports Menu</div>--%>
+                        <div class="menu-item has-sub">
+                            <a href="javascript:void(0)" class="menu-link">
+                                <span class="menu-icon"><i class="fa fa-eye"></i></span>
+                                <span class="menu-text">VIEW REPORTS</span>
+                                <span class="menu-caret"><b class="caret"></b></span>
+                            </a>
+                            <div class="menu-submenu">
+                                <div class="menu-item">
+                                    <a href="rptsale" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-rupee-sign"></i></span>Sale</span>
+                                    </a>
+                                </div>
+                                <%--<div class="menu-item">
+                                    <a href="rptcash" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-money-bill-alt"></i></span>Cash</span>
+                                    </a>
+                                </div>--%>
+                                <div class="menu-item">
+                                    <a href="rptbycash" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-money-bill-alt"></i></span>Cash</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a href="rptbalance" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-user-edit"></i></span>Customer Closing</span>
+                                    </a>
+                                </div>
+
+                                <div class="menu-item" id="rpt_cclosingdetailed" runat="server">
+                                    <a href="rptcclosing" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-file-alt"></i></span>Balance Details</span>
+                                    </a>
+                                </div>
+
+                                <div class="menu-item">
+                                    <a href="rptrawmat" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-file-alt"></i></span>Raw Material</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item" id="RptAdminFinalSale" runat="server">
+                                    <a href="rptfinalsale" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-rupee-sign"></i></span>Final Sale</span>
+                                    </a>
+                                </div>
+
+                                <div class="menu-item" id="RptAdminStock" runat="server">
+                                    <a href="rptstock" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-file-alt"></i></span>Stock Report</span>
+                                    </a>
+                                </div>
+
+                                <div class="menu-item" id="RptAdminMarketBalanceReport" runat="server">
+                                    <a href="rptmarketbalance" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-file-alt"></i></span>Market Balance</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="menu-item has-sub">
+                            <a href="javascript:void(0)" class="menu-link">
+                                <span class="menu-icon"><i class="fa fa-chart-bar"></i></span>
+                                <span class="menu-text">SALE / CASH REPORT</span>
+                                <span class="menu-caret"><b class="caret"></b></span>
+                            </a>
+                            <div class="menu-submenu">
+                                <div class="menu-item">
+                                    <a href="rptsale_filter" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-plus"></i></span>Sale</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a href="rptpurchase_filter" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-minus-circle"></i></span>Purchase</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- This website all code is monitised and licenced. All the code is under copyright by Nitish Soni-8168074180 -->
+                        <!---- Create User Menu Start ----->
+                        <div class="menu-divider"></div>
+                        <div class="menu-header">LOGIN MANAGEMENT</div>
+                        <div class="menu-item has-sub" id="Menu_usermanagement_All" runat="server" visible="false">
+                            <a href="#" class="menu-link">
+                                <span class="menu-icon"><i class="fa fa-user-circle"></i></span>
+                                <span class="menu-text">Manage User</span>
+                                <span class="menu-caret"><b class="caret"></b></span>
+                            </a>
+                            <div class="menu-submenu">
+                                <div class="menu-item">
+                                    <a href="adduser" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-plus"></i></span>New User</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a href="viewuser" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-eye"></i></span>View</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a href="viewloginhistory" class="menu-link">
+                                        <span class="menu-text"><span class="space"><i class="fa fa-eye"></i></span>Login History</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-divider"></div>
+                        <div class="menu-item">
+                            <asp:LinkButton CssClass="btn btn-block font-weight-600 rounded-pill logoutmfouter" ID="btn_outerlogout" runat="server" OnClick="btn_outerlogout_Click"><i class="fa fa-power-off mr-1 ml-n1 opacity-5"></i>logout</asp:LinkButton>
+                        </div>
+
+                        <!-- This website all code is monitised and licenced. All the code is under copyright by Nitish Soni-8168074180 -->
+                        <!----// Create User Menu END ----->
+
+
+
+                    </div>
+                </div>
+
+                <button class="app-sidebar-mobile-backdrop" data-dismiss="sidebar-mobile"></button>
+            </div>
+
+            <div id="content" class="app-content">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Multiverse - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+
+            <div id="footer" class="app-footer">
+                &copy; 2020 Prolab Solutions | All Right Reserved <%--| <a href="javascript:void(0)" style="text-decoration: none;">Developed By Nitish Soni</a>--%>
+            </div>
+
+            <a href="#" data-click="scroll-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+        <!-- This website all code is monitised and licenced. All the code is under copyright by Nitish Soni-8168074180 -->
+        <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+        <script src="~/assets/js/app.min.js" type="e2d3a5858f364ae429533b12-text/javascript"></script>
+        <!-- This website all code is monitised and licenced. All the code is under copyright by Nitish Soni-8168074180 -->
+        <script src="~/assets/plugins/apexcharts/dist/apexcharts.min.js" type="e2d3a5858f364ae429533b12-text/javascript"></script>
+        <script src="~/assets/js/demo/dashboard.demo.js" type="e2d3a5858f364ae429533b12-text/javascript"></script>
+        <!-- This website all code is monitised and licenced. All the code is under copyright by Nitish Soni-8168074180 -->
+        <script src="cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="e2d3a5858f364ae429533b12-|49" defer=""></script>
+        <%--<script src="cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"></script>--%>
+        <script src="~/assets/plugins/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+
+    </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js" type="text/javascript"></script>
 </body>
 </html>
